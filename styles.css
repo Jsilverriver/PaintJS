@@ -1,0 +1,75 @@
+@import "reset.css";
+
+body {
+  background-color: #f6f9fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px;
+}
+
+.canvas {
+  width: 700px;
+  height: 700px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls {
+  margin-top: 80px;
+  /* 여기서 한번 더 설정해주는 이유는 margin을 주면 body영여기 이곳에 영향을 끼치지 못하기 때문인것 같다.*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rangeText {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.controls .controls__range {
+  margin-bottom: 20px;
+}
+
+.controls .controls__btns {
+  margin-bottom: 30px;
+}
+
+.controls__btns button {
+  all: unset;
+  /* 그냥 button모양도 아니고 Fill, Save이 글자만 보이게 됨. 버튼 모양의 기본값을 알려주는듯.*/
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  width: 80px;
+  text-align: center;
+  padding: 5px 0px;
+  color: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.controls__btns button:active {
+  transform: scale(1.2);
+}
+
+.controls .controls__colors {
+  display: flex;
+}
+
+.controls__colors .jsColors {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  /* 동그랗게 만드는 방법은 정사각형이면 width height값의 반을 설정해주면된다. */
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
