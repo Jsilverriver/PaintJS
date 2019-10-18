@@ -4,15 +4,39 @@ canvas.height = CANVAS_SIZE;
 canvas.width = CANVAS_SIZE;
 const ctx = canvas.getContext("2d");
 const INITIAL_COLOR = "2c2c2c";
+
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR; // default
 ctx.fillStyle = INITIAL_COLOR; // default
 ctx.lineWidth = 5; // default
+
 const colors = document.querySelectorAll(".jsColors");
 const range = document.querySelector("#jsRange");
 const mode = document.getElementById("jsMode");
+const saveBtn = document.getElementById("jsSave");
+
+function handleSaveClick(event) {
+  const image = canvas.toDataURL();
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = "PaintJS";
+  // save버튼을 클릭하게 되면, link를 클릭하는것 처럼 만들어서 이벤트를 발생시킨다. 라고 생각하면된다.
+  // 지금 link에 href와 download가 추가되어 있으니까.
+  link.click();
+}
+
+saveBtn.addEventListener("click", handleSaveClick);
+
+//contextmenu가 나오는걸 막는다.
+function handleCM(event) {
+  event.preventDefault();
+  console.log(event);
+}
 
 function paintCanvas() {
   if (filling) {
+    // ctx.fillStyle = color; it is executed below
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
   }
 }
@@ -77,4 +101,5 @@ if (canvas) {
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
   canvas.addEventListener("click", paintCanvas);
+  canvas.addEventListener("contextmenu", handleCM);
 }
